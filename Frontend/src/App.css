@@ -1,0 +1,10 @@
+.sidebarList > li{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.sidebarList > li > span{
+    margin-left: 10px;
+}
