@@ -6,6 +6,13 @@ import likeIcon from "../../assets/like.png";
 import heartIcon from "../../assets/heart.png";
 
 const Post = () => {
+//   const [like, setLike] = useState(Post.like);
+//   const [dislike, setDislike] = useState(false);
+
+//   const handleLike = () => {
+//     setLike(!setLike ? like - 1 : like + 1);
+//     setDislike(false);
+//   };
   return (
     <div className="w-full rounded-md shadow-lg mt-[30px] mb-[30px] p-[10px]">
       <div className="p-[10px]">
@@ -39,11 +46,13 @@ const Post = () => {
             src={likeIcon}
             alt="like_icon"
             className="w-[34px] h-[34px] cursor-pointer"
+            // onClick={handleLike}
           />
           <img
             src={heartIcon}
             alt="heart_icon"
             className="w-[24px] h-[24px] cursor-pointer"
+            // onClick={handleLike}
           />
           <span className="text-sm">1000 likes</span>
         </div>
