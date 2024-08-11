@@ -1,9 +1,13 @@
 import React from "react";
 import { SiFeedly } from "react-icons/si";
+import profilepic from "../../assets/profile.jpg";
 
 const Sidebar = () => {
   return (
-    <div style={{ flex: 3, height: "calc(100vh - 70px)" }} className="">
+    <div
+      style={{ flex: 3, height: "calc(100vh - 70px)" }}
+      className="custom-scrollbar overflow-y-auto sticky top-[70px]"
+    >
       <div className="border p-[20px]">
         <ul className="sidebarList m-0 p-0">
           <li>
@@ -44,7 +48,62 @@ const Sidebar = () => {
           </li>
         </ul>
         <div className="button">
-          <button className="rounded-full w-[150px] p-[20px]">See More</button>
+          <button className="rounded-md bg-slate-200 w-[150px] p-[10px]">
+            See More
+          </button>
+        </div>
+        <hr className="mt-[20px]" />
+        <div className="mt-[20px]">
+          <ul className="sidebarList">
+            <li>
+              <img
+                src={profilepic}
+                alt="pic"
+                className="w-[32px] h-[32px] rounded-full object-cover"
+              />
+              <span>Shabarish...</span>
+            </li>
+            <li>
+              <img
+                src={profilepic}
+                alt="pic"
+                className="w-[32px] h-[32px] rounded-full object-cover"
+              />
+              <span>Shabarish...</span>
+            </li>
+            <li>
+              <img
+                src={profilepic}
+                alt="pic"
+                className="w-[32px] h-[32px] rounded-full object-cover"
+              />
+              <span>Shabarish...</span>
+            </li>
+            <li>
+              <img
+                src={profilepic}
+                alt="pic"
+                className="w-[32px] h-[32px] rounded-full object-cover"
+              />
+              <span>Shabarish...</span>
+            </li>
+            <li>
+              <img
+                src={profilepic}
+                alt="pic"
+                className="w-[32px] h-[32px] rounded-full object-cover"
+              />
+              <span>Shabarish...</span>
+            </li>
+            <li>
+              <img
+                src={profilepic}
+                alt="pic"
+                className="w-[32px] h-[32px] rounded-full object-cover"
+              />
+              <span>Shabarish...</span>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

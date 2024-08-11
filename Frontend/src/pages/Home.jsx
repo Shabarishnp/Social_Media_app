@@ -4,7 +4,6 @@ import Sidebar from "../components/Sidebar/Sidebar";
 import NewsFeed from "../components/NewsFeed/NewsFeed";
 import Rightbar from "../components/Rightbar/Rightbar";
 
-
 const Home = () => {
   return (
     <>

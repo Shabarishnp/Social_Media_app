@@ -1,21 +1,24 @@
 import React from "react";
 
 const Rightbar = () => {
-  return <div style={{ flex: 3.5}} >
-    <div className="pt-[20px] pr-[20px]">
-      <div>
-        <img src="" alt="" />
-        <span className="ml-10"><b>Shabarish</b> and <b> 1 more</b> have birthday today</span>
+  return (
+    <div style={{ flex: 3.5 }}>
+      <div className="pt-[20px] pr-[20px]">
+        <div>
+          <img src="" alt="" />
+          <span className="ml-7">
+            <b>Shabarish</b> and <b> 1 more</b> have birthday today
+          </span>
+        </div>
       </div>
     </div>
-  </div>;
+  );
 };
 
 export default Rightbar;
 
-
-
-{/* <>
+{
+  /* <>
         <div className="flex items-center">
           <img
             src={birthdayIcon}
@@ -37,9 +40,11 @@ export default Rightbar;
             <OnlineUsers key={user.id} user={user} />
           ))}
         </ul>
-      </> */}
+      </> */
+}
 
-{/* <h1 className="font-bold text-xl mb-[10px]">User Information</h1>
+{
+  /* <h1 className="font-bold text-xl mb-[10px]">User Information</h1>
         <div className="mb-[30px]">
           <div className="mb-[10px]">
             <span className="font-semibold mr-[15px] text-slate-500">
@@ -82,4 +87,5 @@ export default Rightbar;
               </Link>
             ))}
           </div>
-        </div> */}
+        </div> */
+}
