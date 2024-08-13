@@ -1,30 +1,50 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { MdOutlineMoreVert } from "react-icons/md";
-import profilePic from "../../assets/profile.jpg";
+// import profilePic from "../../assets/profile.jpg";
 import firstpost from "../../assets/firstpost.jpg";
 import likeIcon from "../../assets/like.png";
 import heartIcon from "../../assets/heart.png";
+// import axios from "axios";
+import userpic from "./assets/user.png";
+import moment from "moment";
+import { Users } from "../../data/dummyData";
+import { getUserData } from "../../utils/api/api";
 
-const Post = () => {
-  //   const [like, setLike] = useState(Post.like);
-  //   const [dislike, setDislike] = useState(false);
+const Post = ({ post }) => {
+  const [like, setLike] = useState(post.likes?.length);
+  const [isLiked, setIsLiked] = useState(false);
+  const [user, setUser] = useState({});
 
-  //   const handleLike = () => {
-  //     setLike(!setLike ? like - 1 : like + 1);
-  //     setDislike(false);
-  //   };
+  useEffect(() => {
+    const getUserInfo = async () => {
+      try {
+        const res = await getUserData(post.userId);
+        setUser(res.data.userInfo);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getUserInfo();
+  }, [post.userId]);
+
+  const handleLike = () => {
+    setLike(!isLiked ? like - 1 : like + 1);
+    setIsLiked(false);
+  };
   return (
     <div className="w-full rounded-md shadow-lg mt-[30px] mb-[30px] p-[10px]">
       <div className="p-[10px]">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <img
-              src={profilePic}
+              src={user.profilePicture || userpic}
               alt="picture"
               className="w-[32px] h-[32px] rounded-full object-cover"
             />
-            <span className="font-bold ml-[10px] mr-[10px]">Shabarish N P</span>
-            <span className="text-sm">lets...! start no time</span>
+            <span className="font-bold ml-[10px] mr-[10px]">
+              {user.username}
+            </span>
+            <span className="text-sm">{moment(post.createdAt).fromNow}</span>
           </div>
           <div>
             <MdOutlineMoreVert className="text-xl cursor-pointer" />
@@ -32,7 +52,7 @@ const Post = () => {
         </div>
       </div>
       <div className="mt-[20px] mb-[20px]">
-        <span>This is a first post...!</span>
+        <span>{post?.desc}</span>
         <img
           src={firstpost}
           alt="firstpic"
@@ -46,19 +66,19 @@ const Post = () => {
             src={likeIcon}
             alt="like_icon"
             className="w-[34px] h-[34px] cursor-pointer"
-            // onClick={handleLike}
+            onClick={handleLike}
           />
           <img
             src={heartIcon}
             alt="heart_icon"
             className="w-[24px] h-[24px] cursor-pointer"
-            // onClick={handleLike}
+            onClick={handleLike}
           />
-          <span className="text-sm">1000 likes</span>
+          <span className="text-sm">{like} likes</span>
         </div>
         <div>
           <span className="cursor-pointer border-b-[1px] border-slate-300 text-sm">
-            200 comments
+            {post.comment}
           </span>
         </div>
       </div>

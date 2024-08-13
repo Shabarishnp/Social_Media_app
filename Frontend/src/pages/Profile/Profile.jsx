@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import coverimage from "../../pages/Profile/assets/cover.jpg";
 import profileimage from "../../pages/Profile/assets/profile.jpg";
@@ -12,7 +12,7 @@ const Profile = () => {
       <Navbar />
       <div className="flex">
         <Sidebar />
-        <div style={{ flex: 9 }}>
+        <div style={{ flex: 9, zIndex: -1 }}>
           <div>
             <div className="h-[350px] relative">
               <img

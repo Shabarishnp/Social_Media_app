@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import friendspic from "../../assets/profile.jpg";
 
 const Rightbar = ({ profile }) => {

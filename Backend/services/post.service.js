@@ -70,9 +70,9 @@ export const getPost = async (params) => {
   }
 };
 
-export const getTimeLinePosts = async (body) => {
+export const getTimeLinePosts = async (params) => {
   try {
-    const currentUser = await userModel.findById(body.userId);
+    const currentUser = await userModel.findById(params.userId);
     const userPosts = await postModel.find({ userId: currentUser._id });
     const timelinePosts = await Promise.all(
       currentUser.followings.map((friendId) => {
@@ -80,6 +80,15 @@ export const getTimeLinePosts = async (body) => {
       })
     );
     return userPosts.concat({ ...timelinePosts });
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getAllPosts = async (params) => {
+  try {
+    const post = await postModel.aggregate([{ $sample: { size: 40 } }]);
+    return post;
   } catch (error) {
     throw error;
   }

@@ -73,7 +73,7 @@ export const likeAndDislikeController = async (req, res) => {
 
 export const getPostController = async (req, res) => {
   try {
-    const post = await getPost(req.params, req.body);
+    const post = await getPost(req.params);
     res.status(200).json({
       message: "Post has been fetched succesfully",
       post,
@@ -89,7 +89,7 @@ export const getPostController = async (req, res) => {
 
 export const getTimeLinePostsController = async (req, res) => {
   try {
-    const timelinePosts = await getTimeLinePosts(req.body);
+    const timelinePosts = await getTimeLinePosts(req.params);
     res.status(200).json({
       timelinePosts,
       message: "Timeline post fetched succesfully",
@@ -99,6 +99,22 @@ export const getTimeLinePostsController = async (req, res) => {
     res.status(500).json({
       error,
       message: "Failed to fetch the post",
+    });
+  }
+};
+
+export const getAllPostsController = async (req, res) => {
+  try {
+    const posts = await getAllPosts();
+    res.status(200).json({
+      message: "Posts have been fetched succesfully",
+      posts,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      error,
+      message: "Failed to fetch the posts",
     });
   }
 };
