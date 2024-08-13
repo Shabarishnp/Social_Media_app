@@ -6,13 +6,13 @@ import likeIcon from "../../assets/like.png";
 import heartIcon from "../../assets/heart.png";
 
 const Post = () => {
-//   const [like, setLike] = useState(Post.like);
-//   const [dislike, setDislike] = useState(false);
+  //   const [like, setLike] = useState(Post.like);
+  //   const [dislike, setDislike] = useState(false);
 
-//   const handleLike = () => {
-//     setLike(!setLike ? like - 1 : like + 1);
-//     setDislike(false);
-//   };
+  //   const handleLike = () => {
+  //     setLike(!setLike ? like - 1 : like + 1);
+  //     setDislike(false);
+  //   };
   return (
     <div className="w-full rounded-md shadow-lg mt-[30px] mb-[30px] p-[10px]">
       <div className="p-[10px]">
