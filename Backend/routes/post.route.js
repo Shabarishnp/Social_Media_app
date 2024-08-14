@@ -28,8 +28,6 @@ router.get("/get-post/:id", getPostController);
 //get all posts
 router.get("/", getAllPostsController);
 
-//get user's posts
-
 //get timeline posts
 router.get("/get-timeline-posts/:userId", getTimeLinePostsController);
 
