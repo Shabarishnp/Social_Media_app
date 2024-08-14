@@ -3,6 +3,7 @@ import {
   deleteUserController,
   followUserController,
   getUserController,
+  getUserProfileController,
   unfollowUserController,
   updateUserController,
 } from "../controllers/user.controller.js";
@@ -17,6 +18,9 @@ router.delete("/:id", deleteUserController);
 
 //get user
 router.get("/:id", getUserController);
+
+//get user profile
+router.get("/", getUserProfileController);
 
 //follow a user
 router.put("/follow/:id", followUserController);

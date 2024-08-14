@@ -1,17 +1,20 @@
-import React from "react";
+// import React from "react";
 import Logo from "../Logo/Logo";
 import { CiSearch } from "react-icons/ci";
 import { IoPersonCircleSharp, IoNotificationsSharp } from "react-icons/io5";
 import { PiChatsFill } from "react-icons/pi";
 import profile from "../../assets/profile.jpg";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div className="h-[70px] w-full bg-customDarkViolet flex items-center sticky top-0">
       <div className="left" style={{ flex: 3 }}>
-        <div className="logodiv cursor-pointer">
-          <Logo />
-        </div>
+        <Link to={"/"}>
+          <div className="logodiv cursor-pointer">
+            <Logo />
+          </div>
+        </Link>
       </div>
       <div className="center" style={{ flex: 5 }}>
         <div className="searchBar w-full h-[30px] bg-white rounded-xl flex items-center">

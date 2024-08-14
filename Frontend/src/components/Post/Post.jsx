@@ -9,6 +9,7 @@ import userpic from "./assets/user.png";
 import moment from "moment";
 import { Users } from "../../data/dummyData";
 import { getUserData } from "../../utils/api/api";
+import { Link } from "react-router-dom";
 
 const Post = ({ post }) => {
   const [like, setLike] = useState(post.likes?.length);
@@ -28,8 +29,8 @@ const Post = ({ post }) => {
   }, [post.userId]);
 
   const handleLike = () => {
-    setLike(!isLiked ? like - 1 : like + 1);
-    setIsLiked(false);
+    setLike(isLiked ? like - 1 : like + 1);
+    setIsLiked(!isLiked);
   };
   return (
     <div className="w-full rounded-md shadow-lg mt-[30px] mb-[30px] p-[10px]">
@@ -41,10 +42,12 @@ const Post = ({ post }) => {
               alt="picture"
               className="w-[32px] h-[32px] rounded-full object-cover"
             />
-            <span className="font-bold ml-[10px] mr-[10px]">
-              {user.username}
-            </span>
-            <span className="text-sm">{moment(post.createdAt).fromNow}</span>
+            <Link to={`/profile/${user.username}`}>
+              <span className="font-bold ml-[10px] mr-[10px]">
+                {user.username}
+              </span>
+            </Link>
+            <span className="text-sm">{moment(post.createdAt).fromNow()}</span>
           </div>
           <div>
             <MdOutlineMoreVert className="text-xl cursor-pointer" />

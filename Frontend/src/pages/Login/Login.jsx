@@ -15,7 +15,7 @@ const Login = () => {
           </span>
         </div>
         <div className="flex flex-col justify-center" style={{ flex: 1 }}>
-          <form >
+          <form>
             <div className="bg-white h-[300px] p-[20px] rounded-md flex flex-col justify-between shadow-lg">
               <input
                 type="email"
@@ -27,7 +27,9 @@ const Login = () => {
                 placeholder="password"
                 className="h-[50px] rounded-md border border-gray-200 text-lg p-[20px] focus:outline-none"
               />
-              <button className="h-[50px] w-1/2 rounded-lg bg-green-600 hover:bg-green-700 transition text-white text-lg font-bold self-center">Login</button>
+              <button className="h-[50px] w-1/2 rounded-lg bg-green-600 hover:bg-green-700 transition text-white text-lg font-bold self-center">
+                Login
+              </button>
               <span className="text-center text-violet-700 cursor-pointer">
                 forgot password?
               </span>

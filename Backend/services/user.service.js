@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import userModel from "../models/user.model.js";
+// import { query } from "mongoose";
 
 export const updateUser = async (userId, updateData) => {
   if (updateData.password) {
@@ -36,6 +37,15 @@ export const deleteUser = async (userId) => {
 export const getUser = async (userId) => {
   try {
     const user = await userModel.findById(userId);
+    return user;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getUserProfile = async (query) => {
+  try {
+    const user = await userModel.findOne({ username: query.username });
     return user;
   } catch (error) {
     throw error;

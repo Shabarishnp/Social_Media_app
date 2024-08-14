@@ -32,12 +32,19 @@ const userSchema = new Schema({
   desc: {
     type: String,
   },
+
   from: {
     type: String,
+    default: "Karnataka",
+  },
+  city: {
+    type: String,
+    default: "Bangalore",
   },
   relationship: {
     type: Number,
     enum: [1, 2, 3],
+    default: 1,
   },
   followers: {
     type: Array,

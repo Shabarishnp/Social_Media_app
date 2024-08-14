@@ -29,7 +29,7 @@ router.get("/get-post/:id", getPostController);
 router.get("/", getAllPostsController);
 
 //get timeline posts
-router.get("/get-timeline-posts/:userId", getTimeLinePostsController);
+router.get("/get-timeline-posts/:username", getTimeLinePostsController);
 
 // module.exports = router;
 
