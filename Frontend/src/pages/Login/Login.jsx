@@ -1,8 +1,9 @@
-import React from "react";
+import { useState } from "react";
 // import { AuthContext } from "../../context/AuthContext";
 // import { loginAuth } from "../../utils/api/auth.api";
 
 const Login = () => {
+  const [auth, setAuth] = useState();
   return (
     <div className="w-screen h-screen bg-customDarkViolet flex items-center justify-center">
       <div className="w-[70%] h-[70%] flex">
