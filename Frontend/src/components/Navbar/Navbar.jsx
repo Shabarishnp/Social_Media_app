@@ -1,12 +1,16 @@
-// import React from "react";
+import { useContext } from "react";
 import Logo from "../Logo/Logo";
 import { CiSearch } from "react-icons/ci";
 import { IoPersonCircleSharp, IoNotificationsSharp } from "react-icons/io5";
 import { PiChatsFill } from "react-icons/pi";
 import profile from "../../assets/profile.jpg";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import noProfile from "../../pages/Profile/assets/user.png";
 
 const Navbar = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user);
   return (
     <div className="h-[70px] w-full bg-customDarkViolet flex items-center sticky top-0">
       <div className="left" style={{ flex: 3 }}>
@@ -56,8 +60,8 @@ const Navbar = () => {
         </div>
         <div className="profilepic">
           <img
-            src={profile}
-            alt=""
+            src={user.profilePicture ? user.profilePicture : noProfile}
+            alt="userprofilepic"
             className="w-[32px] h-[32px] object-cover rounded-full cursor-pointer"
           />
         </div>

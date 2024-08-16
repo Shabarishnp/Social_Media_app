@@ -22,7 +22,7 @@ const NewsFeed = ({ userPosts }) => {
       }
     };
     timelinePosts();
-  }, [username]);
+  }, []);
   return (
     <div style={{ flex: 5.5 }} className="p-[10px]">
       <UploadPost />

@@ -8,9 +8,9 @@ export const register = async (req, res) => {
   try {
     const newUser = await registerUser(req.body);
 
-    const { password, ...data } = newUser._doc;
+    const { password, ...userData } = newUser._doc;
     res.status(200).json({
-      data,
+      userData,
       message: "User Registration Successful",
     });
   } catch (error) {
@@ -24,11 +24,12 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
   try {
-    const data = await deleteUser(req.params.id);
+    const user = await loginUser(req.body, res);
+    const { password, ...userData } = user._doc;
 
     res.status(200).json({
       message: "User Login Successful",
-      data,
+      userData,
     });
   } catch (error) {
     res.status(500).json({

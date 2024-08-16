@@ -1,20 +1,27 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MdOutlineMoreVert } from "react-icons/md";
 // import profilePic from "../../assets/profile.jpg";
 import firstpost from "../../assets/firstpost.jpg";
 import likeIcon from "../../assets/like.png";
 import heartIcon from "../../assets/heart.png";
-// import axios from "axios";
+import axios from "axios";
 import userpic from "./assets/user.png";
 import moment from "moment";
 import { Users } from "../../data/dummyData";
-import { getUserData } from "../../utils/api/api";
+import { getUserData, likeAndDislikePost } from "../../utils/api/api";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Post = ({ post }) => {
   const [like, setLike] = useState(post.likes?.length);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
+  const { user: currentUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    setIsLiked(post.likes?.includes(currentUser.id));
+  }, [currentUser?._id, post.likes]);
 
   useEffect(() => {
     const getUserInfo = async () => {
@@ -28,7 +35,13 @@ const Post = ({ post }) => {
     getUserInfo();
   }, [post.userId]);
 
-  const handleLike = () => {
+  const handleLike = async () => {
+    try {
+      await likeAndDislikePost(post._id, currentUser._id);
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    }
     setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
   };
@@ -38,7 +51,7 @@ const Post = ({ post }) => {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <img
-              src={user.profilePicture || userpic}
+              src={user.profilePicture ? user.profilePicture : userpic}
               alt="picture"
               className="w-[32px] h-[32px] rounded-full object-cover"
             />
