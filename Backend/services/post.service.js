@@ -1,9 +1,12 @@
 import postModel from "../models/post.model.js";
 import userModel from "../models/user.model.js";
 
-export const createPost = async (body) => {
+export const createPost = async (body, file) => {
   try {
-    const newPost = new postModel(body);
+    const newPost = new postModel({
+      ...body,
+      Iimg: file,
+    });
 
     await newPost.save();
 

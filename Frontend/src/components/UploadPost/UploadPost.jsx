@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import profilepic from "../../assets/profile.jpg";
 import {
   MdLabel,
@@ -6,15 +6,35 @@ import {
   MdEmojiEmotions,
   MdLocationPin,
 } from "react-icons/md";
+import { uploadPost } from "../../utils/api/api";
+import { AuthContext } from "../../context/AuthContext";
+import { toast } from "react-toastify";
 
 const UploadPost = () => {
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
-  // const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   // const [preview, setPreview] = useState(null);
-  // const { user } = useContext(AuthContext);
-  console.log(desc);
+  const { user } = useContext(AuthContext);
   console.log(file);
+
+  const handlePostUpload = async () => {
+    setLoading(true);
+    try {
+      const res = await uploadPost(user._id, desc, file);
+      toast.success("Post has been Uploaded Successfully!");
+      // setFile(null);
+      // setPreview(null);
+      // setDesc("");
+      setLoading(false);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+      toast.error("Post Upload failed");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="w-full h-[170px] rounded-lg shadow-lg ">
@@ -38,7 +58,10 @@ const UploadPost = () => {
         <hr className="m-[20px]" />
         <div className="bottom flex items-center justify-between">
           <div className="flex ml-[20px]">
-            <div className="flex items-center mr-[15px] cursor-pointer">
+            <label
+              htmlFor="file"
+              className="flex items-center mr-[15px] cursor-pointer"
+            >
               <MdPermMedia className="mr-[3px] text-violet-500" />
               <span>Photo or Vedio</span>
               <input
@@ -48,8 +71,10 @@ const UploadPost = () => {
                 onChange={(e) => {
                   setFile(e.target.files[0]);
                 }}
+                className="hidden"
+                accept=".png,.jpg, .jpeg"
               />
-            </div>
+            </label>
             <div className="flex items-center mr-[15px] cursor-pointer">
               <MdLabel className="mr-[3px] text-orange-500" />
               <span>Tags</span>
@@ -63,8 +88,12 @@ const UploadPost = () => {
               <span>Location</span>
             </div>
           </div>
-          <button className="bg-customDarkViolet text-white p-[7px] rounded-lg font-semibold">
-            Upload
+          <button
+            disabled={loading}
+            onClick={handlePostUpload}
+            className="bg-customDarkViolet text-white p-[7px] rounded-lg font-semibold"
+          >
+            {loading ? "Uploading" : "Upload"}
           </button>
         </div>
       </div>

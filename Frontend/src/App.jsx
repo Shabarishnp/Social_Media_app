@@ -13,7 +13,7 @@ function App() {
   const { user } = useContext(AuthContext);
   return (
     <>
-     <ToastContainer />
+      <ToastContainer />
       <Routes>
         <Route path="/" element={user ? <Home /> : <Register />} />
         <Route path="/profile/:username" element={<Profile />} />
