@@ -34,7 +34,7 @@ const Sidebar = () => {
             <SiFeedly />
             <span>Questions</span>
           </li>
-          <li>
+          {/* <li>
             <SiFeedly />
             <span>Jobs</span>
           </li>
@@ -45,7 +45,7 @@ const Sidebar = () => {
           <li>
             <SiFeedly />
             <span>Events</span>
-          </li>
+          </li> */}
         </ul>
         <div className="button">
           <button className="rounded-md bg-slate-200 w-[150px] p-[10px]">

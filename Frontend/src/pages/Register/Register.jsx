@@ -35,13 +35,13 @@ const Register = () => {
   };
 
   return (
-    <div className="w-screen h-screen bg-green-100 flex items-center justify-center">
+    <div className="w-screen h-screen bg-customDarkViolet flex items-center justify-center">
       <div className="w-[70%] h-[70%] flex">
         <div className="flex flex-col justify-center" style={{ flex: 1 }}>
-          <h1 className="font-extrabold text-3xl text-green-600">
+          <h1 className="font-extrabold text-3xl text-violet-500">
             Shake Hands
           </h1>
-          <span className="text-lg font-semibold">
+          <span className="text-lg font-semibold text-white">
             Connect With Friends On Shake Hands.
           </span>
         </div>
@@ -92,7 +92,9 @@ const Register = () => {
             >
               Sign Up
             </button>
-            <span>Already have an account login here...</span>
+            <span className="text-violet-700">
+              Already have an account login here...
+            </span>
 
             <button className="h-[50px] w-1/2 rounded-lg bg-blue-600 hover:bg-blue-700 transition text-white text-lg font-bold self-center">
               <Link to={"/login"}>Login</Link>
