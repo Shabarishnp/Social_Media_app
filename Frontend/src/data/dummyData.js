@@ -50,22 +50,22 @@ export const Users = [
   {
     id: 101,
     profilePicture: userImage1,
-    username: "Kwaku Sam",
+    username: "Sam Rahul",
   },
   {
     id: 102,
     profilePicture: userImage2,
-    username: "Ama Serwaa",
+    username: "Ram Dev",
   },
   {
     id: 103,
     profilePicture: userImage3,
-    username: "Samuel Asante",
+    username: "Shabarish",
   },
   {
     id: 104,
     profilePicture: userImage4,
-    username: "Mary Marfo",
+    username: "Mary jyo",
   },
 ];
 
@@ -73,41 +73,41 @@ export const Friends = [
   {
     id: 101,
     profilePicture: userImage1,
-    username: "Kwaku Sam",
+    username: "Kishan",
   },
   {
     id: 102,
     profilePicture: userImage2,
-    username: "Ama Serwaa",
+    username: "Amruth",
   },
   {
     id: 103,
     profilePicture: userImage3,
-    username: "Samuel Asante",
+    username: "Samarth",
   },
   {
     id: 104,
     profilePicture: userImage4,
-    username: "Derrick Kello",
+    username: "David",
   },
   {
     id: 105,
     profilePicture: userImage1,
-    username: "Henry Crentsil",
+    username: "Hanvi",
   },
   {
     id: 106,
     profilePicture: userImage2,
-    username: "Richard Arthur",
+    username: "Richard",
   },
   {
     id: 107,
     profilePicture: userImage3,
-    username: "Emmanuel Boateng",
+    username: "Prem dev",
   },
   {
     id: 108,
     profilePicture: userImage4,
-    username: "Denis Owusu",
+    username: "Dany robber",
   },
 ];

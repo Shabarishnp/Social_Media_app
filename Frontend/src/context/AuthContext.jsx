@@ -2,21 +2,23 @@ import { createContext, useReducer } from "react";
 import AuthReducer from "./AuthReducer";
 
 const INITIAL_STATE = {
-  _id: "66bc8712e8421adfc71b5ab5",
-  username: "Hanvi",
-  email: "hanvi@gmail.com",
-  password: "",
-  profilePicture: "",
-  coverPicture: "",
-  isAdmin: false,
-  from: "Karnataka",
-  city: "Bangalore",
-  relationship: { $numberInt: "1" },
-  followers: [],
-  followings: [],
-  // user: null,
-  // isFetching: false,
-  // error: false,
+  user: null,
+  // user: {
+  //   _id: "66bc8712e8421adfc71b5ab5",
+  //   username: "Hanvi",
+  //   email: "hanvi@gmail.com",
+  //   profilePicture: "",
+  //   coverPicture: "",
+  //   isAdmin: false,
+  //   from: "Karnataka",
+  //   city: "Bangalore",
+  //   relationship: 1,
+  //   followers: [],
+  //   followings: [],
+  //   // user: null,
+  // },
+  isFetching: false,
+  error: false,
 };
 
 export const AuthContext = createContext(INITIAL_STATE);

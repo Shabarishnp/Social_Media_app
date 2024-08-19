@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { MdOutlineMoreVert } from "react-icons/md";
 // import profilePic from "../../assets/profile.jpg";
-import firstpost from "../../assets/firstpost.jpg";
+// import firstpost from "../../assets/firstpost.jpg";
 import likeIcon from "../../assets/like.png";
 import heartIcon from "../../assets/heart.png";
-import axios from "axios";
+// import axios from "axios";
 import userpic from "./assets/user.png";
 import moment from "moment";
-import { Users } from "../../data/dummyData";
+// import { Users } from "../../data/dummyData";
 import { getUserData, likeAndDislikePost } from "../../utils/api/api";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
@@ -69,24 +69,26 @@ const Post = ({ post }) => {
       </div>
       <div className="mt-[20px] mb-[20px]">
         <span>{post?.desc}</span>
-        <img
-          src={firstpost}
-          alt="firstpic"
-          className="mt-[20px] w-full object-contain"
-          style={{ maxHeight: "500px" }}
-        />
+        {post.img && (
+          <img
+            src={post.img}
+            alt="firstpic"
+            className="mt-[20px] w-full object-contain"
+            style={{ maxHeight: "500px" }}
+          />
+        )}
       </div>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-[5px]">
           <img
             src={likeIcon}
-            alt="like_icon"
+            alt="likeicon"
             className="w-[34px] h-[34px] cursor-pointer"
             onClick={handleLike}
           />
           <img
             src={heartIcon}
-            alt="heart_icon"
+            alt="hearticon"
             className="w-[24px] h-[24px] cursor-pointer"
             onClick={handleLike}
           />
@@ -94,7 +96,7 @@ const Post = ({ post }) => {
         </div>
         <div>
           <span className="cursor-pointer border-b-[1px] border-slate-300 text-sm">
-            {post.comment}
+            {post.comment} comments
           </span>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-// import { registerUser } from "../../utils/api/auth.api";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../../utils/api/auth.api";
 
@@ -29,7 +28,7 @@ const Register = () => {
       } catch (error) {
         console.log(error);
         toast.error(error.response.data.message);
-        // toast.error("Something went wrong. Please try again.");
+        toast.error("Something went wrong. Please try again.");
       }
     }
   };
@@ -42,7 +41,7 @@ const Register = () => {
             Shake Hands
           </h1>
           <span className="text-lg font-semibold text-white">
-            Connect With Friends On Shake Hands.
+            Connect With Friends On Shake Hands .....
           </span>
         </div>
         <div className="flex flex-col justify-center" style={{ flex: 1 }}>
@@ -55,7 +54,10 @@ const Register = () => {
               placeholder="username"
               className="h-[50px] rounded-md border border-gray-200 text-lg p-[20px] focus:outline-none"
               onChange={(e) => {
-                setAuth({ ...auth, username: e.target.value });
+                setAuth({
+                  ...auth,
+                  username: e.target.value,
+                });
               }}
               required
             />
@@ -64,7 +66,10 @@ const Register = () => {
               placeholder="email"
               className="h-[50px] rounded-md border border-gray-200 text-lg p-[20px] focus:outline-none"
               onChange={(e) => {
-                setAuth({ ...auth, email: e.target.value });
+                setAuth({
+                  ...auth,
+                  email: e.target.value,
+                });
               }}
               required
             />
@@ -73,7 +78,10 @@ const Register = () => {
               placeholder="password"
               className="h-[50px] rounded-md border border-gray-200 text-lg p-[20px] focus:outline-none"
               onChange={(e) => {
-                setAuth({ ...auth, password: e.target.value });
+                setAuth({
+                  ...auth,
+                  password: e.target.value,
+                });
               }}
               required
             />
@@ -82,23 +90,28 @@ const Register = () => {
               placeholder="confirm password"
               className="h-[50px] rounded-md border border-gray-200 text-lg p-[20px] focus:outline-none"
               onChange={(e) => {
-                setAuth({ ...auth, confirmPassword: e.target.value });
+                setAuth({
+                  ...auth,
+                  confirmPassword: e.target.value,
+                });
               }}
               required
             />
             <button
               type="submit"
-              className="h-[50px] w-1/2 rounded-lg bg-green-600 hover:bg-green-700 transition text-white text-lg font-bold self-center"
+              className="h-[40px] w-1/2 rounded-lg bg-violet-500 hover:bg-gray-700 transition text-white text-lg font-bold self-center"
             >
               Sign Up
             </button>
-            <span className="text-violet-700">
-              Already have an account login here...
+            <span className="text-violet-700 text-center">
+              Already have an account login here... |{" "}
+              <Link
+                className="transition text-blue-600 text-lg font-bold self-center"
+                to={"/login"}
+              >
+                Login
+              </Link>
             </span>
-
-            <button className="h-[50px] w-1/2 rounded-lg bg-blue-600 hover:bg-blue-700 transition text-white text-lg font-bold self-center">
-              <Link to={"/login"}>Login</Link>
-            </button>
           </form>
         </div>
       </div>

@@ -2,8 +2,10 @@ import {
   deleteUser,
   followUser,
   getUser,
+  getUserFriends,
   getUserProfile,
   unfollowUser,
+  updateProfilePicture,
   updateUser,
 } from "../services/user.service.js";
 
@@ -23,6 +25,20 @@ export const updateUserController = async (req, res) => {
     res.status(500).json("You can only update your account");
   }
 };
+
+export const updateProfilePictureController = async (req, res) => {
+  try {
+    const user = await updateProfilePicture(req.params.id, req.file.path);
+    res.status(200).json({
+      user,
+      message: "Profile Picture has been updated Successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+};
+
 export const deleteUserController = async (req, res) => {
   if (req.body.userId === req.params.id || req.body.isAdmin) {
     try {
@@ -47,10 +63,10 @@ export const getUserController = async (req, res) => {
       userInfo: data,
       message: "Profile has been fetched succesfully",
     });
-    res.json(user);
+    // res.json(user);
   } catch (error) {
     console.log(error);
-    res.status(500).json();
+    res.status(500).json(error);
   }
 };
 
@@ -62,10 +78,10 @@ export const getUserProfileController = async (req, res) => {
       userInfo: data,
       message: "Profile has been fetched succesfully",
     });
-    res.json(user);
+    // res.json(user);
   } catch (error) {
     console.log(error);
-    res.status(500).json();
+    res.status(500).json(error);
   }
 };
 
@@ -74,12 +90,12 @@ export const followUserController = async (req, res) => {
     const data = await followUser(req.body, req.params);
     res.status(200).json({
       data,
-      message: "Profile has been fetched succesfully",
+      message: "Followed the user succesfully",
     });
-    res.json(user);
+    // res.json(user);
   } catch (error) {
     console.log(error);
-    res.status(500).json();
+    res.status(500).json(error);
   }
 };
 
@@ -88,11 +104,24 @@ export const unfollowUserController = async (req, res) => {
     const data = await unfollowUser(req.body, req.params);
     res.status(200).json({
       data,
-      message: "Profile has been fetched succesfully",
+      message: "Unfollowed the user succesfully",
     });
-    res.json(user);
+    // res.json(user);
   } catch (error) {
     console.log(error);
     res.status(500).json();
+  }
+};
+
+export const getUserFriendsController = async (req, res) => {
+  try {
+    const friends = await getUserFriends(req.params);
+    res.status(200).json({
+      friends,
+      message: "Friends have fetched Successfully!",
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
   }
 };

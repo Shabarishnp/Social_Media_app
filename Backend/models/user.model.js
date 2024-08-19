@@ -32,7 +32,6 @@ const userSchema = new Schema({
   desc: {
     type: String,
   },
-
   from: {
     type: String,
     default: "Karnataka",
@@ -56,4 +55,4 @@ const userSchema = new Schema({
   },
 });
 
-export default mongoose.model("user", userSchema);
+export default mongoose.model("User", userSchema);

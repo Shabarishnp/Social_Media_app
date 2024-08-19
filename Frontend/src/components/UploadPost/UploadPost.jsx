@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import profilepic from "../../assets/profile.jpg";
+import { useContext, useState } from "react";
+// import profilepic from "../../assets/profile.jpg";
 import {
   MdLabel,
   MdPermMedia,
@@ -9,12 +9,13 @@ import {
 import { uploadPost } from "../../utils/api/api";
 import { AuthContext } from "../../context/AuthContext";
 import { toast } from "react-toastify";
+import userpic from "../Post/assets/user.png";
 
 const UploadPost = () => {
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
-  // const [preview, setPreview] = useState(null);
+  const [preview, setPreview] = useState(null);
   const { user } = useContext(AuthContext);
   console.log(file);
 
@@ -23,9 +24,9 @@ const UploadPost = () => {
     try {
       const res = await uploadPost(user._id, desc, file);
       toast.success("Post has been Uploaded Successfully!");
-      // setFile(null);
-      // setPreview(null);
-      // setDesc("");
+      setFile(null);
+      setPreview(null);
+      setDesc("");
       setLoading(false);
       console.log(res);
     } catch (error) {
@@ -36,12 +37,23 @@ const UploadPost = () => {
     }
   };
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setFile(file);
+    if (file) {
+      const url = URL.createObjectURL(file);
+      setPreview(url);
+    } else {
+      setPreview(null);
+    }
+  };
+
   return (
     <div className="w-full h-[170px] rounded-lg shadow-lg ">
       <div className="wrapper p-[10px]">
         <div className="top flex items-center">
           <img
-            src={profilepic}
+            src={user.profilePicture ? user.profilePicture : userpic}
             alt="profilepic"
             className="w-[50px] h-[50px] rounded-full mr-[10px] object-cover"
           />
@@ -53,6 +65,13 @@ const UploadPost = () => {
               setDesc(e.target.value);
             }}
           />
+          {preview && (
+            <img
+              src={preview}
+              alt="Image preview"
+              className="w-[50px] h-[50px] rounded-md object-cover ml-[15px]"
+            />
+          )}
         </div>
 
         <hr className="m-[20px]" />
@@ -68,11 +87,9 @@ const UploadPost = () => {
                 type="file"
                 name="file"
                 id="file"
-                onChange={(e) => {
-                  setFile(e.target.files[0]);
-                }}
+                onChange={handleFileChange}
                 className="hidden"
-                accept=".png,.jpg, .jpeg"
+                accept=".png, .jpg, .jpeg"
               />
             </label>
             <div className="flex items-center mr-[15px] cursor-pointer">

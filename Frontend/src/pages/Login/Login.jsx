@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { loginAuth } from "../../utils/api/auth.api";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [auth, setAuth] = useState({
@@ -22,7 +23,7 @@ const Login = () => {
             Shake Hands
           </h1>
           <span className="text-lg font-semibold text-white">
-            Connect With Friends On Shake Hands.
+            Connect With Friends On Shake Hands .....
           </span>
         </div>
         <div className="flex flex-col justify-center" style={{ flex: 1 }}>
@@ -33,7 +34,10 @@ const Login = () => {
                 placeholder="email"
                 className="h-[50px] rounded-md border border-gray-200 text-lg p-[20px] focus:outline-none"
                 onChange={(e) => {
-                  setAuth({ ...auth, email: e.target.value });
+                  setAuth({
+                    ...auth,
+                    email: e.target.value,
+                  });
                 }}
                 required
               />
@@ -42,20 +46,29 @@ const Login = () => {
                 placeholder="password"
                 className="h-[50px] rounded-md border border-gray-200 text-lg p-[20px] focus:outline-none"
                 onChange={(e) => {
-                  setAuth({ ...auth, password: e.target.value });
+                  setAuth({
+                    ...auth,
+                    password: e.target.value,
+                  });
                 }}
                 required
                 minLength={3}
               />
-              <button className="h-[50px] w-1/2 rounded-lg bg-green-600 hover:bg-green-700 transition text-white text-lg font-bold self-center">
+              <button className="h-[40px] w-1/2 rounded-lg bg-violet-500 hover:bg-gray-700 transition text-white text-lg font-bold self-center">
                 {isFetching ? "Logging in..." : "Login"}
               </button>
               <span className="text-center text-violet-700 cursor-pointer">
-                forgot password?
+                forgotted password?
               </span>
-              <button className="h-[50px] w-1/2 rounded-lg bg-blue-600 hover:bg-blue-700 transition text-white text-lg font-bold self-center">
-                New User
-              </button>
+              <span className="text-center">
+                If you are new user{" "}
+                <Link
+                  to={"/Register"}
+                  className="text-blue-600 text-md font-semibold self-center"
+                >
+                  Click here
+                </Link>
+              </span>
             </div>
           </form>
         </div>

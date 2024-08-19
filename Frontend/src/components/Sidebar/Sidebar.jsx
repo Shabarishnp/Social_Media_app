@@ -1,7 +1,8 @@
-import React from "react";
+// import React from "react";
 import { SiFeedly } from "react-icons/si";
-import profilepic from "../../assets/profile.jpg";
-
+// import profilepic from "../../assets/profile.jpg";
+import { Friends } from "../../data/dummyData";
+import FriendsList from "../FriendsList/FriendsList"
 const Sidebar = () => {
   return (
     <div
@@ -49,60 +50,16 @@ const Sidebar = () => {
         </ul>
         <div className="button">
           <button className="rounded-md bg-slate-200 w-[150px] p-[10px]">
+            {" "}
             See More
           </button>
         </div>
         <hr className="mt-[20px]" />
         <div className="mt-[20px]">
           <ul className="sidebarList">
-            <li>
-              <img
-                src={profilepic}
-                alt="pic"
-                className="w-[32px] h-[32px] rounded-full object-cover"
-              />
-              <span>Shabarish...</span>
-            </li>
-            <li>
-              <img
-                src={profilepic}
-                alt="pic"
-                className="w-[32px] h-[32px] rounded-full object-cover"
-              />
-              <span>Shabarish...</span>
-            </li>
-            <li>
-              <img
-                src={profilepic}
-                alt="pic"
-                className="w-[32px] h-[32px] rounded-full object-cover"
-              />
-              <span>Shabarish...</span>
-            </li>
-            <li>
-              <img
-                src={profilepic}
-                alt="pic"
-                className="w-[32px] h-[32px] rounded-full object-cover"
-              />
-              <span>Shabarish...</span>
-            </li>
-            <li>
-              <img
-                src={profilepic}
-                alt="pic"
-                className="w-[32px] h-[32px] rounded-full object-cover"
-              />
-              <span>Shabarish...</span>
-            </li>
-            <li>
-              <img
-                src={profilepic}
-                alt="pic"
-                className="w-[32px] h-[32px] rounded-full object-cover"
-              />
-              <span>Shabarish...</span>
-            </li>
+            {Friends.map((friend) => (
+              <FriendsList key={friend.id} friend={friend} />
+            ))}
           </ul>
         </div>
       </div>
