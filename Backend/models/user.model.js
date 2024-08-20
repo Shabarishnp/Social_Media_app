@@ -28,7 +28,6 @@ const userSchema = new Schema({
     type: Boolean,
     default: false,
   },
-  //description
   desc: {
     type: String,
   },
@@ -55,4 +54,4 @@ const userSchema = new Schema({
   },
 });
 
-export default mongoose.model("user", userSchema);
+export default mongoose.model("User", userSchema);

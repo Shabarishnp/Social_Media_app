@@ -17,7 +17,8 @@ const UploadPost = () => {
   const [loading, setLoading] = useState(false);
   const [preview, setPreview] = useState(null);
   const { user } = useContext(AuthContext);
-  console.log(file);
+  console.log(desc)
+  console.log(file); 
 
   const handlePostUpload = async () => {
     setLoading(true);

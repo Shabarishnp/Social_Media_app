@@ -76,8 +76,8 @@ export const getPostController = async (req, res) => {
   try {
     const post = await getPost(req.params);
     res.status(200).json({
-      message: "Post has been fetched succesfully",
       post,
+      message: "Post has been fetched succesfully",
     });
   } catch (error) {
     console.log(error);

@@ -121,7 +121,7 @@ export const unfollowUser = async (userdata, updateData) => {
 
 export const getUserFriends = async (params) => {
   try {
-    const user = await userModel.findById(params.userId);
+    const user = await userModel.findById(params?.userId);
     const friends = await Promise.all(
       user.followings.map((friendId) => {
         return userModel.findById(friendId);

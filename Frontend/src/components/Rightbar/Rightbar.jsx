@@ -6,26 +6,27 @@ import {
   getUserFriends,
   unfollowUser,
 } from "../../../../Backend/services/user.service";
-import { Users } from "../../data/dummyData";
-import OnlineUsers from "../OnlineUsers/OnlineUsers";
+// import { Users } from "../../data/dummyData";
+// import OnlineUsers from "../OnlineUsers/OnlineUsers";
 // import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+// import userModel from "../../../../Backend/models/user.model";
 
 const Rightbar = ({ user }) => {
   const [friends, setFriends] = useState([]);
   const { user: currentUser, dispatch } = useContext(AuthContext);
   const [isFollowed, setIsFollowed] = useState(
-    currentUser?.followings.includes(user?._id)
+    currentUser?.followings.includes(user?.id)
   );
 
   useEffect(() => {
-    setIsFollowed(currentUser?.followings.includes(user?._id));
-  }, [currentUser, user?._id]);
+    setIsFollowed(currentUser?.followings.includes(user?.id));
+  }, [currentUser, user?.id]);
 
   useEffect(() => {
     const getFriends = async () => {
       try {
-        const res = await getUserFriends(user?._id);
+        const res = await getUserFriends({ userId: user?.id });
         setFriends(res.data.friends);
         console.log(res.data);
       } catch (error) {
@@ -33,7 +34,7 @@ const Rightbar = ({ user }) => {
       }
     };
     getFriends();
-  }, [user?._id]);
+  }, [user?.id]);
 
   const handleFollow = async () => {
     try {
@@ -59,12 +60,12 @@ const Rightbar = ({ user }) => {
             <b>Shabarish</b> and <b> 1 more</b> have birthday today
           </span>
         </div>
-        <h1 className="font-bold text-lg mb-[20px]">Online</h1>
+        {/* <h1 className="font-bold text-lg mb-[20px]">Online</h1>
         <ul className="m-0 p-0">
           {Users.map((user) => (
             <OnlineUsers key={user.id} user={user} />
           ))}
-        </ul>
+        </ul> */}
       </>
     );
   };

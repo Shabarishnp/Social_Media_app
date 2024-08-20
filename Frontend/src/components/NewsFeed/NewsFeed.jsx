@@ -4,7 +4,7 @@ import Post from "../Post/Post";
 // import axios from "axios";
 import { getAllPosts, getTimeLinePost } from "../../utils/api/api";
 import { useParams } from "react-router-dom";
-// import { Posts } from "../../data/dummyData";
+import { Posts } from "../../data/dummyData";
 import { AuthContext } from "../../context/AuthContext";
 
 const NewsFeed = ({ userPosts }) => {
@@ -24,7 +24,7 @@ const NewsFeed = ({ userPosts }) => {
       }
     };
     timelinePosts();
-  }, [username]);
+  }, []);
   return (
     <div style={{ flex: 5.5 }} className="p-[10px]">
       {!username || (username === user?.username && <UploadPost />)}

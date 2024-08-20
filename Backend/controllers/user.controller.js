@@ -14,8 +14,8 @@ export const updateUserController = async (req, res) => {
     try {
       const user = await updateUser(req.params.id, req.body);
       res.status(200).json({
-        message: "User updated successfully",
         user,
+        message: "User updated successfully",
       });
     } catch (error) {
       console.log(error);
@@ -63,7 +63,6 @@ export const getUserController = async (req, res) => {
       userInfo: data,
       message: "Profile has been fetched succesfully",
     });
-    // res.json(user);
   } catch (error) {
     console.log(error);
     res.status(500).json(error);
@@ -78,7 +77,6 @@ export const getUserProfileController = async (req, res) => {
       userInfo: data,
       message: "Profile has been fetched succesfully",
     });
-    // res.json(user);
   } catch (error) {
     console.log(error);
     res.status(500).json(error);
@@ -92,7 +90,6 @@ export const followUserController = async (req, res) => {
       data,
       message: "Followed the user succesfully",
     });
-    // res.json(user);
   } catch (error) {
     console.log(error);
     res.status(500).json(error);
@@ -106,10 +103,9 @@ export const unfollowUserController = async (req, res) => {
       data,
       message: "Unfollowed the user succesfully",
     });
-    // res.json(user);
   } catch (error) {
     console.log(error);
-    res.status(500).json();
+    res.status(500).json(error);
   }
 };
 
