@@ -41,5 +41,4 @@ router.put("/unfollow/:id", unfollowUserController);
 //getFriends
 router.get("/friends/:userId", getUserFriendsController);
 
-// module.exports = router;
 export default router;

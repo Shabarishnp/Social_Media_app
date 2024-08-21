@@ -55,7 +55,7 @@ const Login = () => {
                 minLength={3}
               />
               <button className="h-[40px] w-1/2 rounded-lg bg-violet-500 hover:bg-gray-700 transition text-white text-lg font-bold self-center">
-                {isFetching ? "Logging in..." : "Login"}
+                {isFetching ? "Logging in" : "Login"}
               </button>
               <span className="text-center text-violet-700 cursor-pointer">
                 forgotted password?

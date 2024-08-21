@@ -1,6 +1,6 @@
 import bcryptjs from "bcryptjs";
 import userModel from "../models/user.model.js";
-// import { query } from "mongoose";
+console.log(userModel);
 
 export const updateUser = async (userId, updateData) => {
   if (updateData.password) {
@@ -76,11 +76,9 @@ export const followUser = async (userdata, updateData) => {
     try {
       const user = await userModel.findById(userdata.userId);
       const currentUser = await userModel.findById(updateData.id);
-      if (!user.followings.includes(userdata.id)) {
+      if (!user.followings.includes(updateData.id)) {
         await currentUser.updateOne({ $push: { followers: userdata.userId } });
-        await user.updateOne({
-          $push: { followings: updateData.id },
-        });
+        await user.updateOne({ $push: { followings: updateData.id } });
         return { user, currentUser };
       } else {
         throw new Error("You are already following this user");
@@ -98,7 +96,7 @@ export const unfollowUser = async (userdata, updateData) => {
     try {
       const user = await userModel.findById(userdata.userId);
       const currentUser = await userModel.findById(updateData.id);
-      if (!user.followings.includes(userdata.id)) {
+      if (user.followings.includes(updateData.id)) {
         await currentUser.updateOne(
           { $pull: { followers: userdata.userId } },
           { new: true }
@@ -121,7 +119,7 @@ export const unfollowUser = async (userdata, updateData) => {
 
 export const getUserFriends = async (params) => {
   try {
-    const user = await userModel.findById(params?.userId);
+    const user = await userModel.findById(params.userId);
     const friends = await Promise.all(
       user.followings.map((friendId) => {
         return userModel.findById(friendId);

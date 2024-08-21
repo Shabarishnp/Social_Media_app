@@ -1,8 +1,8 @@
 // import React from "react";
 import { SiFeedly } from "react-icons/si";
 // import profilepic from "../../assets/profile.jpg";
-// import { Friends } from "../../data/dummyData";
-// import FriendsList from "../FriendsList/FriendsList"
+import { Friends } from "../../data/dummyData";
+import FriendsList from "../FriendsList/FriendsList";
 const Sidebar = () => {
   return (
     <div
@@ -56,11 +56,11 @@ const Sidebar = () => {
         </div>
         <hr className="mt-[20px]" />
         <div className="mt-[20px]">
-          {/* <ul className="sidebarList">
+          <ul className="sidebarList">
             {Friends.map((friend) => (
               <FriendsList key={friend.id} friend={friend} />
             ))}
-          </ul> */}
+          </ul>
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ import noProfile from "../../pages/Profile/assets/user.png";
 
 const Navbar = () => {
   const { user } = useContext(AuthContext);
-  // console.log(user);
+
   return (
     <div className="h-[70px] w-full bg-customDarkViolet flex items-center sticky top-0">
       <div className="left" style={{ flex: 3 }}>

@@ -11,9 +11,4 @@ router.use(`/${baseURL}/users`, userRoutes);
 router.use(`/${baseURL}/auth`, authRoutes);
 router.use(`/${baseURL}/posts`, postRoutes);
 
-// router.get("/get", (req, res) => {
-//   res.send("Hello from server");
-// });
-
-// module.exports = router;
 export default router;

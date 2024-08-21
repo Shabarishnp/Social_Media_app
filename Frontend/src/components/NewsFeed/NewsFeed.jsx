@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import UploadPost from "../UploadPost/UploadPost";
 import Post from "../Post/Post";
-// import axios from "axios";
+import axios from "axios";
 import { getAllPosts, getTimeLinePost } from "../../utils/api/api";
 import { useParams } from "react-router-dom";
 import { Posts } from "../../data/dummyData";
@@ -11,7 +11,6 @@ const NewsFeed = ({ userPosts }) => {
   const [posts, setPosts] = useState([]);
   const { username } = useParams();
   const { user } = useContext(AuthContext);
-  // console.log(posts);
   useEffect(() => {
     const timelinePosts = async () => {
       try {
@@ -24,10 +23,11 @@ const NewsFeed = ({ userPosts }) => {
       }
     };
     timelinePosts();
-  }, []);
+  }, [username]);
+
   return (
     <div style={{ flex: 5.5 }} className="p-[10px]">
-      {!username || (username === user?.username && <UploadPost />)}
+      {(!username || username === user?.username) && <UploadPost />}
       {posts.map((post) => (
         <Post key={post._id} post={post} />
       ))}
